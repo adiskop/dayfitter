@@ -1,4 +1,4 @@
-class User < ActveRecord::Base
+class User < ActiveRecord::Base
     has_secure_password
     #allows us to use an activerecrd MACRO 
     #(gives us access to few new method) called 'authinticate'
