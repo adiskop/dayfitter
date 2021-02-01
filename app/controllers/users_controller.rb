@@ -25,13 +25,47 @@ class UsersController < ApplicationController
     end
 
     # what routes do i need for signup?
+    # this route's job is to render the sign-up form
     get '/signup' do
+        # erb (render) a view
+        erb :signup
+    end
 
+    #the onlu job this post method has - is to create a user! not to show it to you. This
+    
+    post '/users' do
+        # here we'll create a new user and persist him to the DB
+        # params will look like this:
+        # {
+            # "name"=>"Elizabeth",
+            # "email"=>"elizabeth@e.com",
+            # "password"=>"password"
+        # }
+        # I only want to persist a user that has a name, email AND password
+        if params[:name] != "" && params[:email] != "" && 
+            params[:password] != ""
+            # valid input 
+            @user = User.create(params)
+            # here it will log the user in automatically
+            session[:user_id] = @user.id
+            # where do i want to go now? -- to user show page possibly 
+            redirect "users/#{@user.id}"
+        else
+            # invalid input
+            redirect '/signup'
+        end
     end
 
     # user SHOW route
+    # the id is dynamic
     get '/users/:id' do
-        "this will be the user show page"
+        @user = User.find_by(id: params[:id])
+        erb :'/users/show'
+    end
+
+    get 'logout' do
+        session.clear
+        redirect '/'
     end
 
 end
