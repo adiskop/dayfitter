@@ -22,6 +22,9 @@ class FitnessEntriesController < ApplicationController
     end 
   end
   # show route for a fitness entry
-
+  get '/fitness_entries/:id' do
+    @fitness_entry = FitnessEntry.find(params[:id])
+    erb :'/fitness_entries/show'
+  end
   #index route for all fitness entries
 end
