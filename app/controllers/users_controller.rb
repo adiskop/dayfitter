@@ -17,12 +17,16 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id # actually logging the user in
         # redirect to the user's show page
   
-        redirect "/users/{@user.id}"
-        else 
-        # tell the user they entered invalid credentials 
-        # redirect them to the login page
-        end
+  
+        "Welcome, #{@user.name}!"
+      redirect "users/#{@user.id}"
+    else
+      
+      # tell the user they entered invalid credentials
+      # redirect them to the login page
+      redirect '/login'
     end
+  end
 
     # what routes do i need for signup?
     # this route's job is to render the sign-up form
@@ -63,9 +67,10 @@ class UsersController < ApplicationController
         erb :'/users/show'
     end
 
-    get 'logout' do
-        session.clear
-        redirect '/'
-    end
+   
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
 
 end

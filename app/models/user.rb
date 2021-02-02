@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
     #which takes a paaword as a plain string and checks it against 
     #Bcrypt hashing algorythm to make sure that it's the correct password. 
 
+    validates :name, presence: true
+    validates :email, presence: true
+    validates :email, uniqueness: true
+
+
     has_many :fitness_entries 
 
 end 
