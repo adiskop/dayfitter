@@ -23,17 +23,33 @@ class FitnessEntriesController < ApplicationController
   end
   # show route for a fitness entry
   get '/fitness_entries/:id' do
-    @fitness_entry = FitnessEntry.find(params[:id])
+    set_fitness_entry
     erb :'/fitness_entries/show'
   end
 
   # This route should send us to fitness_entries/edit.erb , which will 
   # render an edit form.   
   get '/fitness_entries/:id/edit' do
+    set_fitness_entry
     erb :'fitness_entries/edit'
+  end
 
+  # This action's job is to:   
+  patch '/fitness_entries/:id' do
+    # 1. find the fitness entry
+    set_fitness_entry
+    # 2. update the fitness entry
+    @fitness_entry.update(excersize_list: params[:excersize_list])
+    # 3. redirect to show page 
+    redirect "/fitness_entries/#{@fitness_entry.id}"
   end
 
 
   #index route for all fitness entries
+
+  private
+  def set_fitness_entry
+    @fitness_entry = FitnessEntry.find(params[:id])
+  end 
+
 end

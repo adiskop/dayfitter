@@ -1,1 +1,8 @@
-EDIT FORM
+EDIT PAGE FOR A FITNESS ENTRY
+
+<form action="/fitness_entries/<%= @fitness_entry.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+<label for="excersize_list">Excersize List: </label>
+<textarea name="excersize_list" style="width:auto; height:auto;"><%= @fitness_entry.excersize_list %></textarea>
+<input type="submit" name="" value="Edit Entry">
+</form>
