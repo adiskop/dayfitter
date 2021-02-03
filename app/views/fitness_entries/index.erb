@@ -1,1 +1,8 @@
-INDEX PAGE FOR FITNESS ENTRIES 
+ALL FITNESS ENTRIES 
+<% @fitness_entries.each do |fitness_entry| %>
+   <h5><a href="/fitness_entries/<%= fitness_entry.id %>"><%=
+    fitness_entry.created_at %></a></h5>
+   <p><%= fitness_entry.excersize_list %></p>
+   <p>By <%= fitness_entry.user.name %></p>
+    <br><br>
+<% end %>

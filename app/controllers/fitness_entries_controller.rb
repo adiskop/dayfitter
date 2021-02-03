@@ -1,5 +1,11 @@
 class FitnessEntriesController < ApplicationController
 
+    # Index Page:
+    get '/fitness_entries' do
+      @fitness_entries = FitnessEntry.all
+      erb :'fitness_entries/index'
+    end
+
   # get fitness_entries/new to render a form to create new entry 
   get '/fitness_entries/new' do
     erb :'/fitness_entries/new'
