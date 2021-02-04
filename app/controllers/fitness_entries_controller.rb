@@ -53,7 +53,7 @@ class FitnessEntriesController < ApplicationController
     # 1. find the fitness entry
     set_fitness_entry
     if logged_in?
-      if @fitness_entry.user == current_user
+      if @fitness_entry.user == current_user && params[:excersize_list] != ""
     # 2. update the fitness entry
     @fitness_entry.update(excersize_list: params[:excersize_list])
     # 3. redirect to show page 
