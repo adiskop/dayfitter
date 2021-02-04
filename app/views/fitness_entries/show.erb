@@ -3,7 +3,10 @@ SHOW PAGE FOR A FITNESS ENTRY
 
 <% if authorized_to_edit?(@fitness_entry) %>
 <a href="/fitness_entries/<%= @fitness_entry.id %>/edit">Edit Entry</a>
-
-Delete link
-
+  <br><br>
+  <form class="" action="/fitness_entries/<%= @fitness_entry.id %>" method="post">
+    <!-- How do I turn this form submission into a DELETE request??? -->
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
 <% end %>
