@@ -1,7 +1,9 @@
 SHOW PAGE FOR A FITNESS ENTRY
 <p><%= @fitness_entry.excersize_list %></p>
 
-Edit link 
+<% if authorized_to_edit?(@fitness_entry) %>
 <a href="/fitness_entries/<%= @fitness_entry.id %>/edit">Edit Entry</a>
 
 Delete link
+
+<% end %>
