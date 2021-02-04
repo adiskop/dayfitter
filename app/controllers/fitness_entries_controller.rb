@@ -38,7 +38,7 @@ class FitnessEntriesController < ApplicationController
   get '/fitness_entries/:id/edit' do
     set_fitness_entry
     if logged_in?
-    if authorized_to_edit(@fitness_entry)
+    if authorized_to_edit?(@fitness_entry)
       erb :'fitness_entries/edit'
     else 
       redirect "users/#{current_user.id}"
