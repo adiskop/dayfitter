@@ -66,8 +66,18 @@ class FitnessEntriesController < ApplicationController
     end
   end
 
-
-  #index route for all fitness entries
+  delete '/fitness_entries/:id' do
+    set_fitness_entry
+    if authorized_to_edit?(@fitness_entry)
+      # delete the entry 
+      @fitness_entry.destroy 
+      # go to all entries
+      redirect '/fitness_entries'
+    else 
+      redirect '/fitness_entries' 
+    end 
+  end
+ 
 
   private
   def set_fitness_entry
