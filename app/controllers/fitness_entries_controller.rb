@@ -50,7 +50,7 @@ class FitnessEntriesController < ApplicationController
 
   # This action's job is to:   
   patch '/fitness_entries/:id' do
-    # 1. find the fitness entry
+    # 1. find the fitness entry (if logged in and if the entry isn't empty!)
     set_fitness_entry
     if logged_in?
       if @fitness_entry.user == current_user && params[:excersize_list] != ""
