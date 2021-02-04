@@ -28,9 +28,9 @@ class ApplicationController < Sinatra::Base
     end 
     
 # Does the fitness entry that passed in belongs to the current user
-    def authorized_to_edit?(fitness_entry)
-      fitness_entry.user == current_user
-    end
+def authorized_to_edit?(fitness_entry)
+  fitness_entry.user == current_user
+end
 
   end
 end
