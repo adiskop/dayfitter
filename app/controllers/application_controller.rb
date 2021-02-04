@@ -26,5 +26,11 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
     end 
+    
+# Does the fitness entry that passed in belongs to the current user
+    def authorized_to_edit?(fitness_entry)
+      fitness_entry.user == current_user
+    end
+
   end
 end
